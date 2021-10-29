@@ -14,14 +14,17 @@ CREATE TABLE lugar (
 -- Comentarios
 CREATE TABLE comentarios (
 	id int NOT NULL AUTO_INCREMENT,
+	lugar_id int NOT NULL,
 	name_user varchar(50) NOT NULL,
 	lname_user varchar(50) NOT NULL,
 	coments_user varchar(255),
 	points_obtained int NOT NULL,
 	time_comment DATETIME NOT NULL,
-    PRIMARY KEY (id)
+    PRIMARY KEY (id, lugar_id),
+	FOREIGN KEY (lugar_id) REFERENCES lugar (id)
 );
 
+-- Trivias
 CREATE TABLE trivias (
 	id int NOT NULL AUTO_INCREMENT,
 	PRIMARY KEY (id)
