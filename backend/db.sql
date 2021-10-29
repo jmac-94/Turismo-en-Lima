@@ -54,8 +54,6 @@ CREATE TABLE respuestas (
 	FOREIGN KEY (pregunta_id, lugar_id, trivia_id) REFERENCES preguntas(id, lugar_id, trivia_id)
 );
 
-
-
 -- Tabla de imagenes de lugares turisticos
 
 /*
@@ -64,7 +62,27 @@ INSERT INTO comentarios(name_user,lname_user,coments_user,points_obtained,time_c
 	('Luis','Izaguirre','Interesante pero le falta mas animacion',8,now()),
 	('Valerie','Ore','Estuvo muy lindo woow!!',10,now()),
 	('Pedro','Rodriguez','Hicieron lo que pudieron xd',2,now());
+*/
 
+
+-- INSTRUCTIONS TO CHECK IF TABLES HAVE THE CORRECT CONSTRAINTS
+/*
 select COLUMN_NAME, CONSTRAINT_NAME, REFERENCED_COLUMN_NAME, REFERENCED_TABLE_NAME
  from information_schema.KEY_COLUMN_USAGE
-where TABLE_NAME = 'respuestas';*/
+where TABLE_NAME = 'comentarios';
+*/
+/*
+select COLUMN_NAME, CONSTRAINT_NAME, REFERENCED_COLUMN_NAME, REFERENCED_TABLE_NAME
+ from information_schema.KEY_COLUMN_USAGE
+where TABLE_NAME = 'trivias';
+*/
+/*
+select COLUMN_NAME, CONSTRAINT_NAME, REFERENCED_COLUMN_NAME, REFERENCED_TABLE_NAME
+ from information_schema.KEY_COLUMN_USAGE
+where TABLE_NAME = 'preguntas';
+*/
+/*
+select COLUMN_NAME, CONSTRAINT_NAME, REFERENCED_COLUMN_NAME, REFERENCED_TABLE_NAME
+ from information_schema.KEY_COLUMN_USAGE
+where TABLE_NAME = 'respuestas';
+*/
