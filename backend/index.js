@@ -12,12 +12,12 @@ app.get('/comments',function(req,res){
         host: "localhost",
         user: 'utec',
         password: '1234567890',
-        database: 'BD_Comentarios'
+        database: 'limaturismo'
     });
 
     connection.connect();
 
-    var myQueryComments="SELECT name_user, lname_user, coments_user, points_obtained, time_comment FROM T_Comentarios";
+    var myQueryComments="SELECT name_user, lname_user, coments_user, points_obtained, time_comment FROM comentarios";
     
     connection.query(myQueryComments,function(error,results,fields){
         res.send(results);    
@@ -31,13 +31,13 @@ app.post('/comments', function(req, res){
         host: "localhost",
         user: 'utec',
         password: '1234567890',
-        database: 'BD_Comentarios'
+        database: 'limaturismo'
     });   
    connection.connect();
-   var myQuery =   " INSERT INTO T_Comentarios (name_user,lname_user,coments_user,points_obtained,time_comment)"+
-                    "VALUES (? , ? , ? , ? , NOW())" 
+   var myQuery =   " INSERT INTO comentarios (lugar_id, name_user,lname_user,coments_user,points_obtained,time_comment)"+
+                    "VALUES (?, ? , ? , ? , ? , NOW())"
 
-   var myValues = [req.body.name_user, req.body.lname_user, req.body.coments_user, req.body.points_obtained, req.body.time_comment ];
+   var myValues = [req.body.lugar_id, req.body.name_user, req.body.lname_user, req.body.coments_user, req.body.points_obtained, req.body.time_comment];
 
    connection.query(myQuery, myValues, function(error, results, fields){
        if (error) throw error;       
@@ -46,16 +46,18 @@ app.post('/comments', function(req, res){
    });
 });
 
-app.delete('/comments/:member_id',function(req,res){
+app.delete('/comments/:id',function(req,res){
     var connection=mysql.createConnection({
         host: "localhost",
         user: 'utec',
         password: '1234567890',
-        database: 'BD_Comentarios'
+        database: 'limaturismo'
     });
     connection.connect();
-    var myQuery= "DELETE FROM T_Comentarios WHERE member_id=?;";
+
+    var myQuery= "DELETE FROM comentarios WHERE id = ?;";
     var myValues=[req.params.name_user];
+
     connection.query(myQuery, myValues, function(error, results, fields){
         if (error) throw error;        
         res.send(results);    

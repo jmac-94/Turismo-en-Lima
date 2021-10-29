@@ -54,25 +54,28 @@ CREATE TABLE respuestas (
 	FOREIGN KEY (pregunta_id, lugar_id, trivia_id) REFERENCES preguntas(id, lugar_id, trivia_id)
 );
 
-
-
+-- AÑADIR LUGARES
 INSERT INTO lugares (nombre, descripcion, ranking)
 	VALUES ('Museo Larco', 'MMMMMM', 10),
 	('Islas Palomino', 'IIIIII', 9),
 	('Plaza de Armas de Lima', 'PPPPP', 9);
 
+-- AÑADIR COMENTARIOS
 INSERT INTO comentarios(lugar_id, name_user, lname_user,coments_user, points_obtained, time_comment) 
 	VALUES (1, 'Wanly', 'Obregon', 'Me parece muy buena la interfaz', 10, now()),
 	(1, 'Luis', 'Izaguirre', 'Interesante pero le falta mas animacion', 8, now()),
 	(1, 'Valerie', 'Ore', 'Estuvo muy lindo woow!!', 10, now()),
 	(1, 'Pedro', 'Rodriguez', 'Hicieron lo que pudieron xd', 2, now());
 
+-- AÑADIR TRIVIAS
 INSERT INTO trivias (lugar_id)
 	VALUES (1);
 
+-- AÑADIR PREGUNTAS
 INSERT INTO preguntas (lugar_id, trivia_id, pregunta)
 	VALUES (1, 1, '¿Cuál es el nombre del lugar turistico?');
 
+-- AÑADIR RESPUESTAS
 INSERT INTO respuestas (lugar_id, trivia_id, pregunta_id, respuesta, correcta)
 	VALUES (1, 1, 1, 'Museo Larco', true),
 	(1, 1, 1, 'Wikipedia', false);
