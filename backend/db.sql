@@ -27,37 +27,44 @@ CREATE TABLE comentarios (
 -- Trivias
 CREATE TABLE trivias (
 	id int NOT NULL AUTO_INCREMENT,
-	PRIMARY KEY (id)
+	lugar_id int NOT NULL,
+	PRIMARY KEY (id, lugar_id),
+	FOREIGN KEY (lugar_id) REFERENCES lugar (id)
 );
 
 -- Preguntas
 CREATE TABLE preguntas (
 	id int NOT NULL AUTO_INCREMENT,
+	lugar_id int NOT NULL,
 	trivia_id int NOT NULL,
 	pregunta varchar(255) NOT NULL,
-	PRIMARY KEY (id, trivia_id),
-	FOREIGN KEY (trivia_id) REFERENCES trivias (id)
+	PRIMARY KEY (id, lugar_id, trivia_id),
+	FOREIGN KEY (trivia_id, lugar_id) REFERENCES trivias (id, lugar_id)
 );
 
 -- Respuestas
 CREATE TABLE respuestas (
 	id int NOT NULL AUTO_INCREMENT,
+	lugar_id int NOT NULL,
 	trivia_id int NOT NULL,
 	pregunta_id int NOT NULL,
 	respuesta varchar(255) NOT NULL,
 	correcta BOOLEAN NOT NULL,
-	PRIMARY KEY (id, trivia_id, pregunta_id),
-	FOREIGN KEY (pregunta_id, trivia_id) REFERENCES preguntas(id, trivia_id)
+	PRIMARY KEY (id, lugar_id, trivia_id, pregunta_id),
+	FOREIGN KEY (pregunta_id, lugar_id, trivia_id) REFERENCES preguntas(id, lugar_id, trivia_id)
 );
 
 
 
 -- Tabla de imagenes de lugares turisticos
 
--- 
+/*
 INSERT INTO comentarios(name_user,lname_user,coments_user,points_obtained,time_comment) 
 	VALUES ('Wanly','Obregon','Me parece muy buena la interfaz',10,now()),
 	('Luis','Izaguirre','Interesante pero le falta mas animacion',8,now()),
 	('Valerie','Ore','Estuvo muy lindo woow!!',10,now()),
 	('Pedro','Rodriguez','Hicieron lo que pudieron xd',2,now());
 
+select COLUMN_NAME, CONSTRAINT_NAME, REFERENCED_COLUMN_NAME, REFERENCED_TABLE_NAME
+ from information_schema.KEY_COLUMN_USAGE
+where TABLE_NAME = 'respuestas';*/
