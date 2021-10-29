@@ -4,47 +4,47 @@ USE limaturismo;
 
 -- Lugares turisticos
 CREATE TABLE lugar (
-	lugar_id int NOT NULL AUTO_INCREMENT,
+	id int NOT NULL AUTO_INCREMENT,
 	nombre varchar(50) NOT NULL,
 	descripcion varchar(300) NOT NULL,
 	ranking int NOT NULL,
-	PRIMARY KEY (lugar_id)
+	PRIMARY KEY (id)
 );
 
 -- Comentarios
 CREATE TABLE comentarios (
-	comment_id int NOT NULL AUTO_INCREMENT,
+	id int NOT NULL AUTO_INCREMENT,
 	name_user varchar(50) NOT NULL,
 	lname_user varchar(50) NOT NULL,
 	coments_user varchar(255),
 	points_obtained int NOT NULL,
 	time_comment DATETIME NOT NULL,
-    PRIMARY KEY (comment_id)
+    PRIMARY KEY (id)
 );
 
-CREATE TABLE trivia (
+CREATE TABLE trivias (
 	id int NOT NULL AUTO_INCREMENT,
 	PRIMARY KEY (id)
 );
 
---Preguntas
+-- Preguntas
 CREATE TABLE preguntas (
 	id int NOT NULL AUTO_INCREMENT,
 	trivia_id int NOT NULL,
 	pregunta varchar(255) NOT NULL,
-	FOREIGN KEY (trivia_id) REFERENCES trivia (id),
-	PRIMARY KEY (id, trivia_id)
+	PRIMARY KEY (id, trivia_id),
+	FOREIGN KEY (trivia_id) REFERENCES trivias (id)
 );
 
---Respuestas
+-- Respuestas
 CREATE TABLE respuestas (
 	id int NOT NULL AUTO_INCREMENT,
 	trivia_id int NOT NULL,
 	pregunta_id int NOT NULL,
 	respuesta varchar(255) NOT NULL,
 	correcta BOOLEAN NOT NULL,
-	FOREIGN KEY (pregunta_id, trivia_id) REFERENCES preguntas(id, trivia_id),
-	PRIMARY KEY (id, trivia_id, pregunta_id)
+	PRIMARY KEY (id, trivia_id, pregunta_id),
+	FOREIGN KEY (pregunta_id, trivia_id) REFERENCES preguntas(id, trivia_id)
 );
 
 
