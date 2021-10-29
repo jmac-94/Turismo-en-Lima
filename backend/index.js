@@ -1,10 +1,8 @@
 var express = require('express');
+var app = express();
 
-var app = express;
-var mysql = require('mysql');
-
-//EL CORS Impide recibir llamadas desde otros dominios
 var cors = require('cors');
+var mysql = require('mysql');
 
 app.use(cors());
 app.use(express.json());
@@ -22,6 +20,44 @@ app.get('/comments',function(req,res){
     var myQueryComments="SELECT name_user, lname_user, coments_user, points_obtained, time_comment FROM T_Comentarios";
     
     connection.query(myQueryComments,function(error,results,fields){
+        res.send(results);    
+        connection.end();
+    });
+});
+
+app.post('/comments', function(req, res){
+    // Step 0: Definir la conexion a la BD
+    var connection=mysql.createConnection({
+        host: "localhost",
+        user: 'utec',
+        password: '1234567890',
+        database: 'BD_Comentarios'
+    });   
+   connection.connect();
+   var myQuery =   " INSERT INTO T_Comentarios (name_user,lname_user,coments_user,points_obtained,time_comment)"+
+                    "VALUES (? , ? , ? , ? , NOW())" 
+
+   var myValues = [req.body.name_user, req.body.lname_user, req.body.coments_user, req.body.points_obtained, req.body.time_comment ];
+
+   connection.query(myQuery, myValues, function(error, results, fields){
+       if (error) throw error;       
+       res.send(results);
+       connection.end();
+   });
+});
+
+app.delete('/comments/:member_id',function(req,res){
+    var connection=mysql.createConnection({
+        host: "localhost",
+        user: 'utec',
+        password: '1234567890',
+        database: 'BD_Comentarios'
+    });
+    connection.connect();
+    var myQuery= "DELETE FROM T_Comentarios WHERE member_id=?;";
+    var myValues=[req.params.name_user];
+    connection.query(myQuery, myValues, function(error, results, fields){
+        if (error) throw error;        
         res.send(results);    
         connection.end();
     });
