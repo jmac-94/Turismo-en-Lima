@@ -20,7 +20,8 @@ app.get('/comments',function(req,res){
     var myQueryComments="SELECT name_user, lname_user, coments_user, points_obtained, time_comment FROM comentarios";
     
     connection.query(myQueryComments,function(error,results,fields){
-        res.send(results);    
+        //console.log(error);
+        res.send(results);
         connection.end();
     });
 });
