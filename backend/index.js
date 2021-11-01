@@ -57,7 +57,7 @@ app.delete('/comments/:id',function(req,res){
     connection.connect();
 
     var myQuery= "DELETE FROM comentarios WHERE id = ?;";
-    var myValues=[req.params.name_user];
+    var myValues=[req.params.id];
 
     connection.query(myQuery, myValues, function(error, results, fields){
         if (error) throw error;        
