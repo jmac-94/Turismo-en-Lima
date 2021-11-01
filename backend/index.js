@@ -7,6 +7,7 @@ var mysql = require('mysql');
 app.use(cors());
 app.use(express.json());
 
+// GET COMENTARIOS
 app.get('/comments',function(req,res){
     var connection=mysql.createConnection({
         host: "localhost",
@@ -26,8 +27,28 @@ app.get('/comments',function(req,res){
     });
 });
 
+//GET PREGUNTAS DE TRIVIA
+app.get('/questions/:trivia_id',function(req,res){
+    var connection=mysql.createConnection({
+        host: "localhost",
+        user: 'utec',
+        password: '1234567890',
+        database: 'limaturismo'
+    });
+    connection.connect();
+
+    var myQueryComments="SELECT lugar_id, trivia_id, pregunta FROM preguntas WHERE trivia_id = ?;";
+    var myValues = [req.params.trivia_id];
+
+    connection.query(myQueryComments, myValues, function(error,results,fields){
+        if (error) throw error;     
+        res.send(results);
+        connection.end();
+    });
+});
+
+// POST COMENTARIOS
 app.post('/comments', function(req, res){
-    // Step 0: Definir la conexion a la BD
     var connection=mysql.createConnection({
         host: "localhost",
         user: 'utec',
@@ -39,14 +60,13 @@ app.post('/comments', function(req, res){
                     "VALUES (?, ? , ? , ? , ? , NOW())"
 
    var myValues = [req.body.lugar_id, req.body.name_user, req.body.lname_user, req.body.coments_user, req.body.points_obtained, req.body.time_comment];
-
    connection.query(myQuery, myValues, function(error, results, fields){
        if (error) throw error;       
        res.send(results);
        connection.end();
    });
 });
-
+// DELETE COMENTARIOS
 app.delete('/comments/:id',function(req,res){
     var connection=mysql.createConnection({
         host: "localhost",
@@ -58,10 +78,61 @@ app.delete('/comments/:id',function(req,res){
 
     var myQuery= "DELETE FROM comentarios WHERE id = ?;";
     var myValues=[req.params.id];
-
     connection.query(myQuery, myValues, function(error, results, fields){
         if (error) throw error;        
         res.send(results);    
+        connection.end();
+    });
+});
+
+//GET LUGARES TURISTICOS
+app.get('/places', function(req,res){
+    var connection=mysql.createConnection({
+        host: "localhost",
+        user: 'utec',
+        password: '1234567890',
+        database: 'limaturismo'
+    });
+    connection.connect();
+    var myQueryComments="SELECT nombre, descripcion, ranking FROM lugares;";
+    connection.query(myQueryComments,function(error,results,fields){
+        if (error) throw error; 
+        res.send(results);
+        connection.end();
+    });
+});
+
+//GET RESPUESTAS DE TRIVIA
+app.get('/answers/:pregunta_id', function(req,res){
+    var connection=mysql.createConnection({
+        host: "localhost",
+        user: 'utec',
+        password: '1234567890',
+        database: 'limaturismo'
+    });
+    connection.connect();
+    var myQueryComments="SELECT lugar_id, trivia_id, pregunta_id, respuesta, correcta FROM respuestas WHERE pregunta_id = ?;";
+    var myValues = [req.params.pregunta_id];
+
+    connection.query(myQueryComments, myValues, function(error,results,fields){
+        if (error) throw error;     
+        res.send(results);
+        connection.end();
+    });
+});
+//GET TRIVIA
+app.get('/trivias', function(req,res){
+    var connection=mysql.createConnection({
+        host: "localhost",
+        user: 'utec',
+        password: '1234567890',
+        database: 'limaturismo'
+    });
+    connection.connect();
+    var myQueryComments="SELECT id,lugar_id FROM trivias;";
+    connection.query(myQueryComments,function(error,results,fields){
+        if (error) throw error; 
+        res.send(results);
         connection.end();
     });
 });
