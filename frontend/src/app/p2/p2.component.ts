@@ -9,7 +9,7 @@ export class P2Component implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
 }
