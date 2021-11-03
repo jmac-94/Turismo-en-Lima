@@ -7,13 +7,19 @@ import { CommentsTableComponent } from './comments-table/comments-table.componen
 import { P2Component } from './p2/p2.component';
 import { AppRoutingModule } from './app-routing.module';
 import { P1Component } from './p1/p1.component';
+import { P3Component } from './p3/p3.component';
+import { P3L1Component } from './p3-l1/p3-l1.component';
+import { P3L2Component } from './p3-l2/p3-l2.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CommentsTableComponent,
     P2Component,
-    P1Component
+    P1Component,
+    P3Component,
+    P3L1Component,
+    P3L2Component
   ],
   imports: [
     BrowserModule,
