@@ -1,23 +1,54 @@
+  <!-- Codigo P1 [Pagina Inicio] -->
 
-<!-- Toolbar -->
-<div class="toolbar" >
-  <img
-    width="80"
-    alt="Logo Lima"
-    src="https://www.canalipe.tv/sites/default/files/styles/895x490/public/web/noticias/img_main/05-19/05-27-lima.jpg?itok=i3p_ZpjR"
-  />
-  <span>WELCOME TO TOURIST IN LIMA</span>
-    <div class="spacer"></div> <!--Realiza el espacio para la derecha-->
-    <!-- Podemos colocar algo a la derecha -->
-    <img width="80" alt="Logo Lima"
-      src="https://www.canalipe.tv/sites/default/files/styles/895x490/public/web/noticias/img_main/05-19/05-27-lima.jpg?itok=i3p_ZpjR"
-      />
-    <img width="80" alt="Logo Lima"
-        src="https://www.canalipe.tv/sites/default/files/styles/895x490/public/web/noticias/img_main/05-19/05-27-lima.jpg?itok=i3p_ZpjR"
-      />    
-</div>
+  <!-- Codigo P1 [Toolbar_Pagina Inicio] -->
 
-<app-comments-table></app-comments-table>
+  <div class="toolbar" >
+
+    <img
+      width="80"
+      alt="Logo Lima"
+      src="https://st.depositphotos.com/1770836/1686/i/600/depositphotos_16860383-stock-photo-flag-of-peru.jpg"
+    />
+
+    <span> TURISMO EN LIMA </span>
+      <div class="spacer"></div>
+      <img width="80" alt="Logo Lima"
+          src="https://st.depositphotos.com/1770836/1686/i/600/depositphotos_16860383-stock-photo-flag-of-peru.jpg"
+        />    
+  </div>
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <!-- Codigo P1 [Texto_Pagina Inicio] -->
+
+  <h1 class="P1_exclamation">
+    Bienvenido a Turismo en Lima !!!
+  </h1>
+
+  <br>
+
+  <p class="P1_paragraph">
+    Esta es una página web peruana que tiene como objetivo incentivar el turismo en el Perú y, en este caso, queremos mostrales algunos de los lugares más atractivos de nuestra capital (Lima). Para que puedas conocer algunos de estos lugares, presiona el botón que dice "Empezar".   
+  </p>
+
+  <br>
+  <br>
+
+  <!-- Codigo P1 [Boton_Pagina Inicio] -->
+
+  <div class="container">
+    <button (click)="goToPage('P2')" id = "btn">
+      Empezar
+    </button>
+  </div>
+
+  <router-outlet></router-outlet>
 
 
 

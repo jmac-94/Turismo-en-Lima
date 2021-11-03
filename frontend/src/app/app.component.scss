@@ -7,22 +7,14 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin: 8px 0;
-  }
-  
+
+
   p {
-    margin: 0;
+    margin: auto;
   }
   
   .spacer {
-    flex: 1;
+    flex: auto;
   }
   
   .toolbar {
@@ -30,7 +22,7 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 60px;
+    height: 80px;
     display: flex;
     align-items: center;
     background-color: blue;
@@ -53,4 +45,22 @@
     text-align: left;
     padding: 8px;
   }
-  
+
+  .P1_exclamation {
+    text-align: center;
+    margin: auto;
+}
+
+.P1_paragraph {
+  text-align: center;
+  margin: auto;
+}  
+
+.container {
+  text-align: center;   
+  margin: auto;
+}
+
+#btn {
+  font-size: 15px;
+}
