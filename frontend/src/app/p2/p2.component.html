@@ -7,3 +7,17 @@
 <br>
 <br>
 
+<!-- members-table.component.html-->
+
+<table>
+    <tr>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Ranking</th>
+    </tr>
+    <tr *ngFor="let item of places">
+      <td>{{item.nombre}}</td>      
+      <td>{{item.descripcion}}</td>
+      <td>{{item.ranking}}</td>
+    </tr>
+  </table>
