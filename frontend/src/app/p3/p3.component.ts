@@ -19,9 +19,9 @@ export class P3Component implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe(
       data => {
-        const place_id = data.get('id');
-
-        this.p2Service.getPlaceById(place_id).subscribe(
+        const id = data.get('id');
+        console.log(id);
+        this.p2Service.getPlaceById(id).subscribe(
           response => {
             console.log(response);
             this.place = response

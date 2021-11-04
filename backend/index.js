@@ -42,7 +42,7 @@ app.get('/questions/:trivia_id',function(req,res){
 
     connection.query(myQueryComments, myValues, function(error,results,fields){
         if (error) throw error;     
-        res.send(results);
+        res.send(results[0]);
         connection.end();
     });
 });
@@ -80,7 +80,7 @@ app.delete('/comments/:id',function(req,res){
     var myValues=[req.params.id];
     connection.query(myQuery, myValues, function(error, results, fields){
         if (error) throw error;        
-        res.send(results);    
+        res.send(results[0]);    
         connection.end();
     });
 });
@@ -94,7 +94,7 @@ app.get('/places', function(req,res){
         database: 'limaturismo'
     });
     connection.connect();
-    var myQueryComments="SELECT nombre, descripcion, ranking FROM lugares;";
+    var myQueryComments="SELECT id, nombre, descripcion, ranking FROM lugares;";
     connection.query(myQueryComments,function(error,results,fields){
         if (error) throw error; 
         res.send(results);
@@ -111,11 +111,12 @@ app.get('/places/:id',function(req,res){
     });
     connection.connect();
 
-    var myQuery= "SELECT * FROM lugares WHERE id = ?;";
+    var myQuery= "SELECT id, nombre, descripcion, ranking FROM lugares WHERE id = ? ";
     var myValues=[req.params.id];
+    
     connection.query(myQuery, myValues, function(error, results, fields){
         if (error) throw error;        
-        res.send(results);    
+        res.send(results[0]);    
         connection.end();
     });
 });
@@ -134,7 +135,7 @@ app.get('/answers/:pregunta_id', function(req,res){
 
     connection.query(myQueryComments, myValues, function(error,results,fields){
         if (error) throw error;     
-        res.send(results);
+        res.send(results[0]);
         connection.end();
     });
 });

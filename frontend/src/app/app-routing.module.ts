@@ -7,7 +7,7 @@ import { P3Component } from './p3/p3.component';
 const routes: Routes = [
   {path:'',component: P1Component},
   {path:'P2',component: P2Component},
-  {path:'P2/vistas',component: P3Component}
+  {path:'P2/vistas/:id',component: P3Component}
 ];
 
 @NgModule({

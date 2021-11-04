@@ -15,7 +15,7 @@ export class P2Service {
     return this.http.get<any>('http://localhost:3000/places');
   }
 
-  getPlaceById(place_id: any){
-    return this.http.get<any>(`http://localhost:3000/places/${place_id}`);
+  getPlaceById(id: any){
+    return this.http.get<any>(`http://localhost:3000/places/${id}`);
   }
 }
