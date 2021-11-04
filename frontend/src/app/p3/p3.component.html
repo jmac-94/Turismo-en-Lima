@@ -16,4 +16,33 @@
     <p>{{place.descripcion}}</p>
     
     <p>{{place.ranking}}</p>
-  </div>
+</div>
+
+<button routerLink="/P2">
+  regresar
+</button>
+
+<br>
+<br>
+<br>
+
+<button routerLink="/P2">
+  regresar
+</button>
+
+<table>
+  <tr>
+    <th>nombre</th>
+    <th>apellido</th>
+    <th>comentario</th>
+    <th>puntaje</th>
+    <th>fecha</th>
+  </tr>
+  <tr *ngFor="let item of comments">  
+    <td>{{item.name_user}}</td>
+    <td>{{item.lname_user}}</td>
+    <td>{{item.coments_user}}</td>
+    <td>{{item.points_obtained}}</td>
+    <td>{{item.time_comment}}</td>
+  </tr>
+</table>

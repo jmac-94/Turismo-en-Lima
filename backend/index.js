@@ -8,7 +8,7 @@ app.use(cors());
 app.use(express.json());
 
 // GET COMENTARIOS
-app.get('/comments',function(req,res){
+app.get('/comments/:lugar_id',function(req,res){
     var connection=mysql.createConnection({
         host: "localhost",
         user: 'utec',
@@ -18,9 +18,11 @@ app.get('/comments',function(req,res){
 
     connection.connect();
 
-    var myQueryComments="SELECT name_user, lname_user, coments_user, points_obtained, time_comment FROM comentarios";
+    var myQueryComments="SELECT name_user, lname_user, coments_user, points_obtained, time_comment FROM comentarios "
+                         + "WHERE lugar_id = ? ";
+    var myValues = [req.params.lugar_id];
     
-    connection.query(myQueryComments,function(error,results,fields){
+    connection.query(myQueryComments, myValues, function(error,results,fields){
         //console.log(error);
         res.send(results);
         connection.end();
