@@ -101,6 +101,24 @@ app.get('/places', function(req,res){
         connection.end();
     });
 });
+//GET LUGARES TURISTICOS POR ID
+app.get('/places/:id',function(req,res){
+    var connection=mysql.createConnection({
+        host: "localhost",
+        user: 'utec',
+        password: '1234567890',
+        database: 'limaturismo'
+    });
+    connection.connect();
+
+    var myQuery= "SELECT * FROM lugares WHERE id = ?;";
+    var myValues=[req.params.id];
+    connection.query(myQuery, myValues, function(error, results, fields){
+        if (error) throw error;        
+        res.send(results);    
+        connection.end();
+    });
+});
 
 //GET RESPUESTAS DE TRIVIA
 app.get('/answers/:pregunta_id', function(req,res){
