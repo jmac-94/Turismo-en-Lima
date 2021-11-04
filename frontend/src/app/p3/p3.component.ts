@@ -1,3 +1,5 @@
+import { ActivatedRoute, Router } from '@angular/router';
+import { P2Service } from '../_services/p2.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class P3Component implements OnInit {
 
-  constructor() { }
+  place: any;
+
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private p2Service: P2Service
+  ) { }
 
   ngOnInit(): void {
+    this.activatedRoute.paramMap.subscribe(
+      data => {
+        const id = data.get('id');
+        console.log(id);
+        this.p2Service.getPlaceById(id).subscribe(
+          response => {
+            console.log(response);
+            this.place = response
+          },
+          error => {
+            console.error(error);
+          }
+        )
+      }
+    );
   }
 
 }

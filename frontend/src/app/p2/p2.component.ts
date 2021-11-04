@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { P2Service } from '../_services/p2.service'
 
 @Component({
@@ -13,15 +12,12 @@ export class P2Component implements OnInit {
 
   constructor(
     private p2Service: P2Service,
-    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.p2Service.getPlaces().subscribe(data => {
       this.places = data;
+      console.log(this.places);
     })
-  }
-
-  viewPlace(lugar_id: any){
   }
 }
