@@ -43,7 +43,7 @@ La aplicación web incluye:
 La motivación para crear la web se encontró en [Where in Warcraft?](https://www.kruithne.net/where-in-warcraft/) la cual es una aplicación de un videojuego conocido que muestra múltiples locaciones del mundo del juego y reta a sus jugadores a adivinar qué locación es. De manera similar se pretendía hacer con la ciudad de Lima, pero luego se decidió expandir la idea.
 
 ---------------------------------------------
-## P2: Turismo en Lima App (Aplicación Móvil)
+<!-- # P2: Turismo en Lima App (Aplicación Móvil)
 
 Turismo en Lima App es una aplicación móvil que posee las mismas características que la web de Turismo en Lima con algunas diferencias:
 
@@ -56,9 +56,9 @@ Turismo en Lima App es una aplicación móvil que posee las mismas característi
 ### Motivacion
 La motivación para crear el app se encontró en el deseo de querer ofrecer a los usuarios funcionalidades que son más cómodas de utilizar en un ambiente móvil. Una diferencia con la aplicación web es la opción de ganar descuentos restaurantes tras completar una trivia.
 
-La finalidad del app es la de complementar la página web y ofrecer una experiencia cómoda móvil.
+La finalidad del app es la de complementar la página web y ofrecer una experiencia cómoda móvil. 
 
----------------------------------------------
+--------------------------------------------- -->
 ## Funcionalidades
 
 | Angular Route | Backend URLs | Funcionalidad |
@@ -70,7 +70,7 @@ La finalidad del app es la de complementar la página web y ofrecer una experien
 | `/places` | `GET /places` | Obtener informacion de los lugares |
 | `/places/:id` | `GET /places/:id` | Se tiene la informacion de los lugares identificadas por ID |  
 | `/answers/:pregunta_id` | `GET /answers/:pregunta_id` | Tiene las respuestas correctas de las preguntas en la trivia identificadas por ID |  
-| `/trivias` | `GET /trivias` |  |  
+| `/trivias` | `GET /trivias` | De modo general la funcion de trivias  |  
 
 
 ## Instalación
@@ -80,7 +80,7 @@ La finalidad del app es la de complementar la página web y ofrecer una experien
 1. Abrir MySQL
 2. Ejecutar el script de inicialización de la DB:
 
-`source chess.sql`
+`source .sql`
 
 3. Necesita tener el siguiente usuario:
 
