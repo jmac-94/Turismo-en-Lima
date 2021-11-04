@@ -7,23 +7,13 @@ import { ComentariosService } from '../_services/comentarios.service';
   styleUrls: ['./comments-table.component.scss']
 })
 export class CommentsTableComponent implements OnInit {
-  comment=[
-    {
-      name_user:"",
-      lname_user:"",
-      coments_user:"",
-      points_obtained:10,
-      time_comment:""
-    }
-  ]
+
   constructor(
     private ComentariosService:ComentariosService
   ) {}
 
   ngOnInit(): void {
-    this.ComentariosService.getComments().subscribe((data)=>{
-      this.comment=data;
-    })
+
   }
 
 }

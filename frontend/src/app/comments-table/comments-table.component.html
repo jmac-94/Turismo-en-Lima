@@ -1,26 +1,3 @@
-<p>---------------</p>
-<p>----------------</p>
-<h2>Mostrar Comentarios</h2>
-<table>
-    <tr>
-        <th>Nombre</th>
-        <th>Apellido</th>
-        <th>Comentes</th>
-        <th>Puntos</th>
-        <th>Fecha</th>
-    </tr>
-    <tr *ngFor="let item of comment">
-        <td>{{item.name_user}}</td>
-        <td>{{item.lname_user}}</td>
-        <td>{{item.coments_user}}</td>
-        <td>{{item.points_obtained}}</td>
-        <td>{{item.time_comment}}</td>
-    </tr>
 
-</table>
-{{comment | json}}
-<ul>
-    <li *ngFor="let member of comment">{{member.time_comment}}</li>
-</ul>
   
   

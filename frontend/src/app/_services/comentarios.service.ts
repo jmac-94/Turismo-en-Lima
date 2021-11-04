@@ -10,7 +10,7 @@ export class ComentariosService {
     private http:HttpClient
   ) { }
 
-  getComments(){
-    return this.http.get<any>('http://localhost:3000/comments');
+  getCommentsByPlaceID(id: any){
+    return this.http.get<any>(`http://localhost:3000/comments/${id}`);
   }
 }

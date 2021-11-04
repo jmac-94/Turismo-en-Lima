@@ -1,6 +1,7 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { P2Service } from '../_services/p2.service';
 import { Component, OnInit } from '@angular/core';
+import { ComentariosService } from '../_services/comentarios.service';
 
 @Component({
   selector: 'app-p3',
@@ -10,10 +11,12 @@ import { Component, OnInit } from '@angular/core';
 export class P3Component implements OnInit {
 
   place: any;
+  comments: any [] = [];
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private p2Service: P2Service
+    private p2Service: P2Service,
+    private commentsService: ComentariosService,
   ) { }
 
   ngOnInit(): void {
@@ -21,6 +24,17 @@ export class P3Component implements OnInit {
       data => {
         const id = data.get('id');
         console.log(id);
+
+        this.commentsService.getCommentsByPlaceID(id).subscribe(
+          response => {
+            console.log(response);
+            this.comments = response
+          },
+          error => {
+            console.error(error);
+          }
+        )
+
         this.p2Service.getPlaceById(id).subscribe(
           response => {
             console.log(response);
