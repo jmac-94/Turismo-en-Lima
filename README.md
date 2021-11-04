@@ -63,14 +63,14 @@ La finalidad del app es la de complementar la página web y ofrecer una experien
 
 | Angular Route | Backend URLs | Funcionalidad |
 | --- | --- | --- |
-| `/login` | `POST /login` | Realizar login | 
-| `/register` | `POST /user` | Crear un nuevo usuario | 
-| `/members` | `GET /members` | Ver miembros del club de ajedrez | 
-| `/tournaments` | `GET /tournaments` | Ver los torneos en el club de ajedrez | 
-| `/tournaments/new` | `POST /tournaments` | Crear un nuevo torneo |
-| `/tournaments/delete` | `DELETE /tournaments` | Borrar un torneo |  
-| `/tournaments/:tournament_id/user` | `GET /tournaments/:tournament_id/user` | Ver los usuarios inscritos al torneo |  
-| `/tournaments/:tournament_id/user` | `POST /tournaments/:tournament_id/user` | Crear un nuevo torneo |  
+| `/comments` | `GET /comments` | Obtener los comentarios | 
+| `/questions/:trivia_id` | `GET /questions/:trivia_id` | Obtener preguntas de la trivia identificadas por ID | 
+| `/comments` | `POST /comments` | publicar comentarios | 
+| `/comments/:id` | `DELETE /comments/:id` | Eliminar comentarios identificadas por ID | 
+| `/places` | `GET /places` | Obtener informacion de los lugares |
+| `/places/:id` | `GET /places/:id` | Se tiene la informacion de los lugares identificadas por ID |  
+| `/answers/:pregunta_id` | `GET /answers/:pregunta_id` | Tiene las respuestas correctas de las preguntas en la trivia identificadas por ID |  
+| `/trivias` | `GET /trivias` |  |  
 
 
 ## Instalación
