@@ -17,6 +17,7 @@ export class P3Component implements OnInit {
     private activatedRoute: ActivatedRoute,
     private p2Service: P2Service,
     private commentsService: ComentariosService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -46,6 +47,10 @@ export class P3Component implements OnInit {
         )
       }
     );
+  }
+
+  goToPage(pageName:string):void{
+    this.router.navigate([`${pageName}`]);
   }
 
 }

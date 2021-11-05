@@ -39,12 +39,12 @@ app.get('/questions/:trivia_id',function(req,res){
     });
     connection.connect();
 
-    var myQueryComments="SELECT lugar_id, trivia_id, pregunta FROM preguntas WHERE trivia_id = ?;";
+    var myQueryComments="SELECT id, pregunta FROM preguntas WHERE trivia_id = ?;";
     var myValues = [req.params.trivia_id];
 
     connection.query(myQueryComments, myValues, function(error,results,fields){
         if (error) throw error;     
-        res.send(results[0]);
+        res.send(results);
         connection.end();
     });
 });
@@ -141,8 +141,9 @@ app.get('/answers/:pregunta_id', function(req,res){
         connection.end();
     });
 });
+
 //GET TRIVIA
-app.get('/trivias', function(req,res){
+app.get('/trivias/:lugar_id', function(req,res){
     var connection=mysql.createConnection({
         host: "localhost",
         user: 'utec',
@@ -150,8 +151,12 @@ app.get('/trivias', function(req,res){
         database: 'limaturismo'
     });
     connection.connect();
-    var myQueryComments="SELECT id,lugar_id FROM trivias;";
-    connection.query(myQueryComments,function(error,results,fields){
+    var myQueryComments= "SELECT id, lugar_id FROM trivias " 
+                         + "WHERE lugar_id = ? ";
+
+    var myValues = [req.params.lugar_id];  
+
+    connection.query(myQueryComments, myValues, function(error,results,fields){
         if (error) throw error; 
         res.send(results);
         connection.end();

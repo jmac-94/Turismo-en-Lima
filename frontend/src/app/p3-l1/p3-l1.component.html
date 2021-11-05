@@ -5,4 +5,13 @@
 <br>
 <br>
 
-<p>p3-l1 works!</p>
+<table>
+    <tr>
+      <th>id</th>
+      <th>lugar</th>
+    </tr>
+    <tr *ngFor="let item of trivias">  
+      <td><a [routerLink]="item.id">{{item.id}}</a></td>     
+      <td>{{item.lugar_id}}</td>
+    </tr>
+  </table>
