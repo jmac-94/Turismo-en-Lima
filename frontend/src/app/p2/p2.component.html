@@ -1,109 +1,65 @@
-<div class="container px-4 py-5" id="hanging-icons">
-  <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
-    <div class="col d-flex align-items-start">
-      <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
-        <svg class="bi" width="1em" height="1em"><use xlink:href="https://www.museosdelima.com/wp-content/uploads/2018/01/plaza-mayor-lima-3.jpg"/></svg>
+<div class="album py-5 bg-light">
+  <div class="container">
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <div class="col">
+        <div class="card shadow-sm">
+          <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><image 
+            width="450" 
+            height="300" 
+            xlink:href="https://elperuano.pe/fotografia/thumbnail/2020/06/19/000081776M.jpg" 
+          /></svg>
+
+          <div class="card-body" *ngIf="places">
+            <p class="card-text">{{places[0].nombre}}</p>
+            <div class="d-flex justify-content-center align-items-center">
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm"><a [routerLink]="['/P2/vistas/', places[0].id]" class="btn btn-primary">
+                  Conoce el lugar 
+                </a></button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div *ngIf="places">
-        <h2>{{places[0].nombre}}</h2>
-        <a [routerLink]="['/P2/vistas/', places[0].id]"  class="btn btn-primary">
-          Conoce el lugar 
-        </a>
+      <div class="col">
+        <div class="card shadow-sm">
+          <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><image 
+            width="370" 
+            height="280" 
+            xlink:href="https://upload.wikimedia.org/wikipedia/commons/2/24/Aves_marinas_Islas_Palomino.jpg" 
+          /></svg>
+          <div class="card-body" *ngIf="places">
+            <p class="card-text">{{places[1].nombre}}</p>
+            <div class="d-flex justify-content-center align-items-center">
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm"><a [routerLink]="['/P2/vistas/', places[1].id]" class="btn btn-primary">
+                  Conoce el lugar 
+                </a></button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="col d-flex align-items-start">
-      <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
-        <svg class="bi" width="1em" height="1em"><use xlink:href="#cpu-fill"/></svg>
+      <div class="col">
+        <div class="card shadow-sm">
+          <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><image 
+            width="500" 
+            height="235" 
+            xlink:href="https://www.museosdelima.com/wp-content/uploads/2018/01/plaza-mayor-lima-3.jpg" 
+          /></svg>
+          <div class="card-body" *ngIf="places">
+            <p class="card-text">{{places[2].nombre}}</p>
+            <div class="d-flex justify-content-center align-items-center">
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm"><a [routerLink]="['/P2/vistas/', places[2].id]" class="btn btn-primary">
+                  Conoce el lugar 
+                </a></button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div *ngIf="places">
-        <h2>{{places[1].nombre}}</h2>
-        <a [routerLink]="['/P2/vistas/', places[1].id]" class="btn btn-primary">
-          Conoce el lugar 
-        </a>
-      </div>
-    </div>
-    <div class="col d-flex align-items-start">
-      <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
-        <svg class="bi" width="1em" height="1em"><use xlink:href="#tools"/></svg>
-      </div>
-      <div *ngIf="places">
-        <h2>{{places[2].nombre}}</h2>
-        <a [routerLink]="['/P2/vistas/', places[2].id]" class="btn btn-primary">
-          Conoce el lugar 
-        </a>
-      </div>
-    </div>
+   </div>
   </div>
 </div>
-
-<h1>
-  Lugares Turísticos
-</h1>
-
-<p>
-  Elige el lugar dandole click a uno de los botones con el nombre de cada lugar.
-</p>
-
-<br>
-
-<ul style="list-style-type:none;" class="L_Images">
-
-  <div class="Imagen_L1">
-  
-    <li>
-    
-      <img src="https://www.museosdelima.com/wp-content/uploads/2018/01/plaza-mayor-lima-3.jpg" alt="" class="center" width="200px" height="450px">
-    
-    </li>
-
-    <br>
-    <br>
-    <br>
-
-    <div class="container">
-
-        <button id="btn">
-
-          Plaza de Armas
-  
-        </button>
-
-    </div>
-
-    <br>
-    <br>
-
-
-  </div>
-
-  <br>
-
-  <div class="Imagen_L2">
-  
-    <li>
-    
-      <img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcRJNRvoS6U0vBpPF5gl1eLIX7Px0EzWNLbnnUUjid4LVtZeIDZq9me4RJZgOCzmGxo50d61AndkI6V4EwCtsBF4_A" alt="" class="center" width="200px" height="450px">
-    
-    </li>
-
-    <br>
-    <br>
-    <br>
-
-    <div class="container">
-
-        <button id="btn">
-
-          Circuito Mágico del Agua
-  
-        </button>
-
-    </div>
-
-    <br>
-    <br>
-
-  </div>
-
-</ul>
-
