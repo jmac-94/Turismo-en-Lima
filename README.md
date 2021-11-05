@@ -65,7 +65,7 @@ La finalidad del app es la de complementar la página web y ofrecer una experien
 | --- | --- | --- |
 | `/comments` | `GET /comments` | Obtener los comentarios | 
 | `/questions/:trivia_id` | `GET /questions/:trivia_id` | Obtener preguntas de la trivia identificadas por ID | 
-| `/comments` | `POST /comments` | publicar comentarios | 
+| `/comments` | `POST /comments` |Publicar comentarios | 
 | `/comments/:id` | `DELETE /comments/:id` | Eliminar comentarios identificadas por ID | 
 | `/places` | `GET /places` | Obtener informacion de los lugares |
 | `/places/:id` | `GET /places/:id` | Se tiene la informacion de los lugares identificadas por ID |  
@@ -80,7 +80,7 @@ La finalidad del app es la de complementar la página web y ofrecer una experien
 1. Abrir MySQL
 2. Ejecutar el script de inicialización de la DB:
 
-`source .sql`
+`source turismolima.sql`
 
 3. Necesita tener el siguiente usuario:
 
@@ -105,5 +105,5 @@ La finalidad del app es la de complementar la página web y ofrecer una experien
 
 2. Iniciar el proyecto
 
-`ng serve`
+`ng serve --open`
 
