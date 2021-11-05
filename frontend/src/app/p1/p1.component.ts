@@ -12,4 +12,7 @@ export class P1Component implements OnInit {
   ngOnInit(): void {
   }
 
+  showAuthor(){
+    alert("El equipo 4 :D");
+  }
 }

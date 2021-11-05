@@ -1,8 +1,43 @@
-<br>
-<br>
-<br>
-<br>
-<br>
+<div class="container px-4 py-5" id="hanging-icons">
+  <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+    <div class="col d-flex align-items-start">
+      <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+        <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"/></svg>
+      </div>
+      <div *ngIf="places">
+        <h2>{{places[0].nombre}}</h2>
+        <p>{{places[0].descripcion}}</p>
+        <a [routerLink]="['/P2/vistas/', places[0].id]"  class="btn btn-primary">
+          Conoce el lugar 
+        </a>
+      </div>
+    </div>
+    <div class="col d-flex align-items-start">
+      <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+        <svg class="bi" width="1em" height="1em"><use xlink:href="#cpu-fill"/></svg>
+      </div>
+      <div *ngIf="places">
+        <h2>{{places[1].nombre}}</h2>
+        <p>{{places[1].descripcion}}</p>
+        <a [routerLink]="['/P2/vistas/', places[1].id]" class="btn btn-primary">
+          Conoce el lugar 
+        </a>
+      </div>
+    </div>
+    <div class="col d-flex align-items-start">
+      <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+        <svg class="bi" width="1em" height="1em"><use xlink:href="#tools"/></svg>
+      </div>
+      <div *ngIf="places">
+        <h2>{{places[2].nombre}}</h2>
+        <p>{{places[2].descripcion}}</p>
+        <a [routerLink]="['/P2/vistas/', places[2].id]" class="btn btn-primary">
+          Conoce el lugar 
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
 
 <h1>
   Lugares Turísticos
