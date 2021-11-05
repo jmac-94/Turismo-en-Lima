@@ -14,6 +14,7 @@ import { P3Component } from './p3/p3.component';
 import { P3L1Component } from './p3-l1/p3-l1.component';
 import { P3L2Component } from './p3-l2/p3-l2.component';
 import { RespuestasComponent } from './respuestas/respuestas.component';
+import { SobreNosotrosComponent } from './sobre-nosotros/sobre-nosotros.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { RespuestasComponent } from './respuestas/respuestas.component';
     P3Component,
     P3L1Component,
     P3L2Component,
-    RespuestasComponent
+    RespuestasComponent,
+    SobreNosotrosComponent
   ],
   imports: [
     HttpClientModule,
