@@ -80,7 +80,7 @@ La finalidad del app es la de complementar la página web y ofrecer una experien
 1. Abrir MySQL
 2. Ejecutar el script de inicialización de la DB:
 
-`source turismolima.sql`
+`source db.sql`
 
 3. Necesita tener el siguiente usuario:
 
