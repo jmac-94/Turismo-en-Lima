@@ -8,4 +8,4 @@ USER node
 RUN npm install
 COPY --chown=node:node . .
 EXPOSE 4200
-CMD [ "./node_modules/@angular/cli/bin/ng", "serve" ]
+CMD [ "./node_modules/@angular/cli/bin/ng", "serve", "--host", "0.0.0.0" ]
