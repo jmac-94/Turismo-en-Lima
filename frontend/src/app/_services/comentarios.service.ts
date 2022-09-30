@@ -11,6 +11,6 @@ export class ComentariosService {
   ) { }
 
   getCommentsByPlaceID(id: any){
-    return this.http.get<any>(`http://localhost:3000/comments/${id}`);
+    return this.http.get<any>(`http://44.207.78.114:3000/comments/${id}`);
   }
 }

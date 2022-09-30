@@ -11,10 +11,10 @@ export class TriviaService {
   ) { }
 
   getTriviaByPlaceID(place_id: any){
-    return this.http.get<any>(`http://localhost:3000/trivias/${place_id}`);
+    return this.http.get<any>(`http://44.207.78.114:3000/trivias/${place_id}`);
   }
 
   getQuestionsByTriviaID(trivia_id: any){
-    return this.http.get<any>(`http://localhost:3000/questions/${trivia_id}`);
+    return this.http.get<any>(`http://44.207.78.114:3000/questions/${trivia_id}`);
   }
 }
