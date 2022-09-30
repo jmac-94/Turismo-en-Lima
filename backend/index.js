@@ -7,15 +7,19 @@ var mysql = require('mysql');
 app.use(cors());
 app.use(express.json());
 
-// GET COMENTARIOS
-app.get('/comments/:lugar_id',function(req,res){
-    var connection=mysql.createConnection({
-        host: "localhost",
-        user: 'utec',
-        password: '1234567890',
+function db_connection() {
+    return mysql.createConnection({
+        host: "54.225.112.157",
+        port: "8109",
+        user: 'root',
+        password: 'utec',
         database: 'limaturismo'
     });
+}
 
+// GET COMENTARIOS
+app.get('/comments/:lugar_id',function(req,res){
+    var connection = db_connection();
     connection.connect();
 
     var myQueryComments="SELECT name_user, lname_user, coments_user, points_obtained, time_comment FROM comentarios "
@@ -31,12 +35,7 @@ app.get('/comments/:lugar_id',function(req,res){
 
 //GET PREGUNTAS DE TRIVIA
 app.get('/questions/:trivia_id',function(req,res){
-    var connection=mysql.createConnection({
-        host: "localhost",
-        user: 'utec',
-        password: '1234567890',
-        database: 'limaturismo'
-    });
+    var connection = db_connection();
     connection.connect();
 
     var myQueryComments="SELECT id, pregunta FROM preguntas WHERE trivia_id = ?;";
@@ -51,13 +50,9 @@ app.get('/questions/:trivia_id',function(req,res){
 
 // POST COMENTARIOS
 app.post('/comments', function(req, res){
-    var connection=mysql.createConnection({
-        host: "localhost",
-        user: 'utec',
-        password: '1234567890',
-        database: 'limaturismo'
-    });   
-   connection.connect();
+    var connection = db_connection();
+    connection.connect();
+
    var myQuery =   " INSERT INTO comentarios (lugar_id, name_user,lname_user,coments_user,points_obtained,time_comment)"+
                     "VALUES (?, ? , ? , ? , ? , NOW())"
 
@@ -70,12 +65,7 @@ app.post('/comments', function(req, res){
 });
 // DELETE COMENTARIOS
 app.delete('/comments/:id',function(req,res){
-    var connection=mysql.createConnection({
-        host: "localhost",
-        user: 'utec',
-        password: '1234567890',
-        database: 'limaturismo'
-    });
+    var connection = db_connection();
     connection.connect();
 
     var myQuery= "DELETE FROM comentarios WHERE id = ?;";
@@ -89,13 +79,9 @@ app.delete('/comments/:id',function(req,res){
 
 //GET LUGARES TURISTICOS
 app.get('/places', function(req,res){
-    var connection=mysql.createConnection({
-        host: "localhost",
-        user: 'utec',
-        password: '1234567890',
-        database: 'limaturismo'
-    });
+    var connection = db_connection();
     connection.connect();
+
     var myQueryComments="SELECT id, nombre, descripcion, ranking FROM lugares;";
     connection.query(myQueryComments,function(error,results,fields){
         if (error) throw error; 
@@ -105,12 +91,7 @@ app.get('/places', function(req,res){
 });
 //GET LUGARES TURISTICOS POR ID
 app.get('/places/:id',function(req,res){
-    var connection=mysql.createConnection({
-        host: "localhost",
-        user: 'utec',
-        password: '1234567890',
-        database: 'limaturismo'
-    });
+    var connection = db_connection();
     connection.connect();
 
     var myQuery= "SELECT id, nombre, descripcion, ranking FROM lugares WHERE id = ? ";
@@ -125,13 +106,9 @@ app.get('/places/:id',function(req,res){
 
 //GET RESPUESTAS DE TRIVIA
 app.get('/answers/:pregunta_id', function(req,res){
-    var connection=mysql.createConnection({
-        host: "localhost",
-        user: 'utec',
-        password: '1234567890',
-        database: 'limaturismo'
-    });
+    var connection = db_connection();
     connection.connect();
+
     var myQueryComments="SELECT lugar_id, trivia_id, pregunta_id, respuesta, correcta FROM respuestas WHERE pregunta_id = ?;";
     var myValues = [req.params.pregunta_id];
 
@@ -144,13 +121,9 @@ app.get('/answers/:pregunta_id', function(req,res){
 
 //GET TRIVIA
 app.get('/trivias/:lugar_id', function(req,res){
-    var connection=mysql.createConnection({
-        host: "localhost",
-        user: 'utec',
-        password: '1234567890',
-        database: 'limaturismo'
-    });
+    var connection = db_connection();
     connection.connect();
+
     var myQueryComments= "SELECT id, lugar_id FROM trivias " 
                          + "WHERE lugar_id = ? ";
 
