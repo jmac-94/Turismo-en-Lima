@@ -108,21 +108,36 @@ app.get('/comments/:lugar_id',function(req,res){
     });
 });
 
-// // UPDATE COMENTARIOS
-// app.patch('/comments/:id',function(req,res){
-//     var connection = db_connection();
-//     connection.connect();
+// UPDATE COMENTARIOS
 
-//     var myQueryComments="SELECT name_user, lname_user, coments_user, points_obtained, time_comment FROM comentarios "
-//                          + "WHERE lugar_id = ? ";
-//     var myValues = [req.params.lugar_id];
+app.put('/comments/:id',function(req,res){
     
-//     connection.query(myQueryComments, myValues, function(error,results,fields){
-//         //console.log(error);
-//         res.send(results);
-//         connection.end();
-//     });
-// });
+    var connection=db_connection();
+    connection.connect();
+
+    var myQuery = "UPDATE comentarios SET "
+    var myValues = [ ];
+
+    console.log(req.body);
+
+    if (req.body.coments_user){
+        myQuery += " coments_user = ?";
+        myValues.push(req.body.coments_user);
+    }
+    else {
+        console.log("error");
+        return;
+    }
+
+    myQuery += " WHERE id = ?; "
+    myValues.push(req.params.id)
+   
+   connection.query(myQuery, myValues, function(error, results, fields){
+       if (error) throw error;
+       res.send(results);
+       connection.end();
+   });
+});
 
 // POST COMENTARIOS
 app.post('/comments', function(req, res){
