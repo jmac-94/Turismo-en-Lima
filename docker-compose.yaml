@@ -1,11 +1,11 @@
 services:
   front:
-    image: "ijlpyfha/pp-frontend"
+    image: "jmacu/frontend"
     container_name: "frontend"
     ports:
       - "80:4200"
   back:
-    image: "ijlpyfha/pp-backend"
+    image: "jmacu/backend"
     container_name: "backend"
     ports:
-      - "3000:3000"
+      - "8001:3000"

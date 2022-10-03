@@ -9,25 +9,26 @@ app.use(express.json());
 
 function db_connection() {
     return mysql.createConnection({
-        host: "54.225.112.157",
-        port: "8109",
+        host: "3.85.58.225",
+        port: "3306",
         user: 'root',
         password: 'utec',
         database: 'limaturismo'
     });
 }
 
-// GET COMENTARIOS
-app.get('/comments/:lugar_id',function(req,res){
+//GET TRIVIA
+app.get('/trivias/:lugar_id', function(req,res){
     var connection = db_connection();
     connection.connect();
 
-    var myQueryComments="SELECT name_user, lname_user, coments_user, points_obtained, time_comment FROM comentarios "
+    var myQueryComments= "SELECT id, lugar_id FROM trivias " 
                          + "WHERE lugar_id = ? ";
-    var myValues = [req.params.lugar_id];
-    
+
+    var myValues = [req.params.lugar_id];  
+
     connection.query(myQueryComments, myValues, function(error,results,fields){
-        //console.log(error);
+        if (error) throw error; 
         res.send(results);
         connection.end();
     });
@@ -48,31 +49,17 @@ app.get('/questions/:trivia_id',function(req,res){
     });
 });
 
-// POST COMENTARIOS
-app.post('/comments', function(req, res){
+//GET RESPUESTAS DE TRIVIA
+app.get('/answers/:pregunta_id', function(req,res){
     var connection = db_connection();
     connection.connect();
 
-   var myQuery =   " INSERT INTO comentarios (lugar_id, name_user,lname_user,coments_user,points_obtained,time_comment)"+
-                    "VALUES (?, ? , ? , ? , ? , NOW())"
+    var myQueryComments="SELECT lugar_id, trivia_id, pregunta_id, respuesta, correcta FROM respuestas WHERE pregunta_id = ?;";
+    var myValues = [req.params.pregunta_id];
 
-   var myValues = [req.body.lugar_id, req.body.name_user, req.body.lname_user, req.body.coments_user, req.body.points_obtained, req.body.time_comment];
-   connection.query(myQuery, myValues, function(error, results, fields){
-       if (error) throw error;       
-       res.send(results);
-       connection.end();
-   });
-});
-// DELETE COMENTARIOS
-app.delete('/comments/:id',function(req,res){
-    var connection = db_connection();
-    connection.connect();
-
-    var myQuery= "DELETE FROM comentarios WHERE id = ?;";
-    var myValues=[req.params.id];
-    connection.query(myQuery, myValues, function(error, results, fields){
-        if (error) throw error;        
-        res.send(results[0]);    
+    connection.query(myQueryComments, myValues, function(error,results,fields){
+        if (error) throw error;     
+        res.send(results[0]);
         connection.end();
     });
 });
@@ -89,6 +76,7 @@ app.get('/places', function(req,res){
         connection.end();
     });
 });
+
 //GET LUGARES TURISTICOS POR ID
 app.get('/places/:id',function(req,res){
     var connection = db_connection();
@@ -104,34 +92,64 @@ app.get('/places/:id',function(req,res){
     });
 });
 
-//GET RESPUESTAS DE TRIVIA
-app.get('/answers/:pregunta_id', function(req,res){
+// GET COMENTARIOS
+app.get('/comments/:lugar_id',function(req,res){
     var connection = db_connection();
     connection.connect();
 
-    var myQueryComments="SELECT lugar_id, trivia_id, pregunta_id, respuesta, correcta FROM respuestas WHERE pregunta_id = ?;";
-    var myValues = [req.params.pregunta_id];
-
+    var myQueryComments="SELECT name_user, lname_user, coments_user, points_obtained, time_comment FROM comentarios "
+                         + "WHERE lugar_id = ? ";
+    var myValues = [req.params.lugar_id];
+    
     connection.query(myQueryComments, myValues, function(error,results,fields){
-        if (error) throw error;     
-        res.send(results[0]);
+        //console.log(error);
+        res.send(results);
         connection.end();
     });
 });
 
-//GET TRIVIA
-app.get('/trivias/:lugar_id', function(req,res){
+// // UPDATE COMENTARIOS
+// app.patch('/comments/:id',function(req,res){
+//     var connection = db_connection();
+//     connection.connect();
+
+//     var myQueryComments="SELECT name_user, lname_user, coments_user, points_obtained, time_comment FROM comentarios "
+//                          + "WHERE lugar_id = ? ";
+//     var myValues = [req.params.lugar_id];
+    
+//     connection.query(myQueryComments, myValues, function(error,results,fields){
+//         //console.log(error);
+//         res.send(results);
+//         connection.end();
+//     });
+// });
+
+// POST COMENTARIOS
+app.post('/comments', function(req, res){
     var connection = db_connection();
     connection.connect();
 
-    var myQueryComments= "SELECT id, lugar_id FROM trivias " 
-                         + "WHERE lugar_id = ? ";
+   var myQuery =   " INSERT INTO comentarios (lugar_id, name_user,lname_user,coments_user,points_obtained,time_comment)"+
+                    "VALUES (?, ? , ? , ? , ? , NOW())"
 
-    var myValues = [req.params.lugar_id];  
+   var myValues = [req.body.lugar_id, req.body.name_user, req.body.lname_user, req.body.coments_user, req.body.points_obtained, req.body.time_comment];
+   connection.query(myQuery, myValues, function(error, results, fields){
+       if (error) throw error;       
+       res.send(results);
+       connection.end();
+   });
+});
 
-    connection.query(myQueryComments, myValues, function(error,results,fields){
-        if (error) throw error; 
-        res.send(results);
+// DELETE COMENTARIOS
+app.delete('/comments/:id',function(req,res){
+    var connection = db_connection();
+    connection.connect();
+
+    var myQuery= "DELETE FROM comentarios WHERE id = ?;";
+    var myValues=[req.params.id];
+    connection.query(myQuery, myValues, function(error, results, fields){
+        if (error) throw error;        
+        res.send(results[0]);    
         connection.end();
     });
 });

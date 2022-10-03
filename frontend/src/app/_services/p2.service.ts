@@ -12,10 +12,10 @@ export class P2Service {
   ) {}
 
   getPlaces(){
-    return this.http.get<any>('http://44.207.78.114:3000/places');
+    return this.http.get<any>('http://LoadBalancerProyecto-300297017.us-east-1.elb.amazonaws.com:8002/places');
   }
 
   getPlaceById(id: any){
-    return this.http.get<any>(`http://44.207.78.114:3000/places/${id}`);
+    return this.http.get<any>(`http://LoadBalancerProyecto-300297017.us-east-1.elb.amazonaws.com:8002/places/${id}`);
   }
 }

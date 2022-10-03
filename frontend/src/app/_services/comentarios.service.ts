@@ -11,6 +11,6 @@ export class ComentariosService {
   ) { }
 
   getCommentsByPlaceID(id: any){
-    return this.http.get<any>(`http://44.207.78.114:3000/comments/${id}`);
+    return this.http.get<any>(`http://LoadBalancerProyecto-300297017.us-east-1.elb.amazonaws.com:8003/comments/${id}`);
   }
 }
